@@ -1,7 +1,6 @@
 {
   "name": "nlwmobile",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "android": "react-native run-android",
     "ios": "react-native run-ios",
@@ -10,8 +9,10 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx"
   },
   "dependencies": {
-    "react": "18.1.0",
-    "react-native": "0.70.4"
+    "native-base": "^3.4.21", 
+    "react-native": "0.70.4",
+    "react-native-safe-area-context": "^3.3.2",
+    "react-native-svg": "^12.1.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",
@@ -41,5 +42,9 @@
       "json",
       "node"
     ]
-  }
+  },
+  "overrides" :{
+    "react": "18.1.0"
+  },
+  "private": true
 }
