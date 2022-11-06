@@ -4,6 +4,7 @@ import Loading from './src/components/Loading/Loading';
 import SignIn from './src/screens/SignIn';
 
 import { THEME } from './src/styles/theme'
+import { AuthContextProvider } from './src/context/AuthContext';
 
 const App = () => {
 
@@ -17,8 +18,10 @@ const App = () => {
 
   return (
     <NativeBaseProvider theme={THEME}>
-      <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-      {isloading ? <Loading/> : <SignIn/>}
+      <AuthContextProvider>
+        <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
+        {isloading ? <Loading/> : <SignIn/>}
+      </AuthContextProvider>
     </NativeBaseProvider>
   );
 };
