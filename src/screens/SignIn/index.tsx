@@ -1,5 +1,5 @@
 import { Center, Text, Icon } from "native-base";
-import React from "react";
+import React, {useEffect} from "react";
 import Logo from '../../assets/logo.svg'
 import { Button } from "../../components/Button/Button";
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -10,8 +10,6 @@ import { useAuth } from "../../hooks/useAuth";
 export default function SignIn(){
 
     const {signIn, user} = useAuth();
-
-    console.log('dados do user', user)
 
     return(
         <Center flex={1} bgColor="gray.900" p={7}>

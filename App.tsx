@@ -2,9 +2,10 @@ import React, {type PropsWithChildren, useState, useEffect} from 'react';
 import { NativeBaseProvider, StatusBar } from "native-base";
 import Loading from './src/components/Loading/Loading';
 import SignIn from './src/screens/SignIn';
-
 import { THEME } from './src/styles/theme'
 import { AuthContextProvider } from './src/context/AuthContext';
+
+
 
 const App = () => {
 
