@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useEffect } from "react";
+import { createContext, ReactNode, useEffect, useState } from "react";
 import { Platform } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
 
@@ -24,19 +24,16 @@ export function AuthContextProvider({children}: AuthProviderProps){
 
 
     useEffect(() => {
-        GoogleSignin.configure({
-        webClientId: CLI_ID_GOOGLE, // client ID of type WEB for your server (needed to verify user ID and offline access)
-      });
 },[])
 
     const signIn = async () => {
-        const userInfo = await GoogleSignin.signIn();
-        console.log(userInfo.idToken)
+        const userInfo = await GoogleSignin.getTokens();
+        console.log(userInfo.accessToken)
     }
 
 
     return(
-        <AuthContext.Provider value={{signIn, user:{ name: 'Charles', avatarUrl: 'https://github.com/CharlesJKK.png'}}}>
+        <AuthContext.Provider value={{signIn, user:{ name: `teste`, avatarUrl: 'https://github.com/CharlesJKK.png'}}}>
             {children}
         </AuthContext.Provider>
     )

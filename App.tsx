@@ -24,7 +24,7 @@ const App = () => {
     <NativeBaseProvider theme={THEME}>
       <AuthContextProvider>
         <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-        {isloading ? <Loading/> : <Pools/>}
+        {isloading ? <Loading/> : <SignIn/>}
       </AuthContextProvider>
     </NativeBaseProvider>
   );
