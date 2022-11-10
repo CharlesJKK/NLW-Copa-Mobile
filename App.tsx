@@ -7,6 +7,7 @@ import Pools from './src/screens/Pools/Pools';
 import FindPool from './src/screens/FindPool/FindPool';
 import { THEME } from './src/styles/theme'
 import { AuthContextProvider } from './src/context/AuthContext';
+import { Routes } from './src/routes';
 
 
 
@@ -24,7 +25,7 @@ const App = () => {
     <NativeBaseProvider theme={THEME}>
       <AuthContextProvider>
         <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-        {isloading ? <Loading/> : <SignIn/>}
+        {isloading ? <Loading/> : <Routes/>}
       </AuthContextProvider>
     </NativeBaseProvider>
   );

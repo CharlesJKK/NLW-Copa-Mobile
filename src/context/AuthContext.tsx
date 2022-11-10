@@ -1,6 +1,7 @@
 import { createContext, ReactNode, useEffect, useState } from "react";
 import { Platform } from 'react-native';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { api } from '../api/api'
 
 interface UserProps {
     name: string;
@@ -16,24 +17,40 @@ export const CLI_ID_GOOGLE = Platform.OS == 'ios' ? "" : "536961710722-0njap8sm8
 
 export interface AuthContextDataProps {
     user: UserProps;
+    isUserLoading: boolean;
     signIn: () => Promise<void>
 }
 export const AuthContext = createContext({} as AuthContextDataProps);
 
 export function AuthContextProvider({children}: AuthProviderProps){
 
-
-    useEffect(() => {
-},[])
+    const [user, setUser] = useState<UserProps>({} as UserProps);
+    const [isUserLoading, setIsUserLoading] = useState(false)
 
     const signIn = async () => {
-        const userInfo = await GoogleSignin.getTokens();
-        console.log(userInfo.accessToken)
+        try{
+            const userInfo = await GoogleSignin.getTokens();
+
+            setIsUserLoading(true);
+
+            const tokenResponse = await api.post('/users',{ access_token: userInfo.accessToken });
+
+            api.defaults.headers.common['Authorization'] = `Bearer ${tokenResponse.data.token}`;
+
+            const userInfoResponse = await api.get('/me');
+            setUser(userInfoResponse.data.user)
+
+        }catch(error){
+            console.log(error);
+            throw error;
+        }finally{
+            setIsUserLoading(false)
+        }
     }
 
 
     return(
-        <AuthContext.Provider value={{signIn, user:{ name: `teste`, avatarUrl: 'https://github.com/CharlesJKK.png'}}}>
+        <AuthContext.Provider value={{signIn, user, isUserLoading}}>
             {children}
         </AuthContext.Provider>
     )
