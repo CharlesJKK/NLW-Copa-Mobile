@@ -1,12 +1,11 @@
 import { TouchableOpacity, TouchableOpacityProps } from 'react-native';
 import { Heading, HStack, Text, VStack } from 'native-base';
+import { Participants, ParticipantProps } from '../Participants/Participants';
 
-import { Participants, ParticipantProps } from './Participants';
-
-export interface PoolPros {
+export interface PoolCardProps {
   id: string;
   code: string;
-  title: string;
+  tittle: string;
   ownerId: string;
   createdAt: string;
   owner: {
@@ -19,7 +18,7 @@ export interface PoolPros {
 }
 
 interface Props extends TouchableOpacityProps {
-  data: PoolPros;
+  data: PoolCardProps;
 }
 
 export function PoolCard({ data, ...rest }: Props) {
@@ -39,7 +38,7 @@ export function PoolCard({ data, ...rest }: Props) {
       >
         <VStack>
           <Heading color="white" fontSize="md" fontFamily="heading">
-            {data.title}
+            {data.tittle}
           </Heading>
 
           <Text color="gray.200" fontSize="xs">
