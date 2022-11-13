@@ -1,7 +1,7 @@
 import { HStack } from 'native-base';
 import CountryFlag from "react-native-country-flag";
 
-import { Input } from './Input';
+import { Input } from '../../components/Input/Input';
 
 interface Props {
   code: string;
