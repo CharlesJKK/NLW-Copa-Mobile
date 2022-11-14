@@ -30,6 +30,7 @@ export function AuthContextProvider({children}: AuthProviderProps){
 
     useEffect(() => {
         GoogleSignin.configure({
+            scopes: ['https://www.googleapis.com/auth/drive.readonly'],
             webClientId: CLI_ID_GOOGLE,
         })
     },[])

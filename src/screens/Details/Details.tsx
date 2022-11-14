@@ -70,7 +70,7 @@ export default function Details(){
                     <Option title='Seus palpites' isSelected={optionSelected === 'guesses'} onPress={() => setOptionSelected('guesses')}/>
                     <Option title='Ranking do grupo' isSelected={optionSelected === 'ranking'} onPress={() => setOptionSelected('ranking')}/>
                 </HStack>
-                <Guesses poolId={poolDetails.id}/>
+                <Guesses poolId={poolDetails.id} code={poolDetails.code}/>
             </VStack>
             :
             <EmptyMyPoolList code={poolDetails.code}/>
