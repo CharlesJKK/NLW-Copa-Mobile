@@ -36,7 +36,6 @@ export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessCon
   const { colors, sizes } = useTheme();
 
   const when = dayjs(data.date).locale(ptBR).format("DD [de] MMMM [de] YYYY [às] HH:00[h]");
-
   return (
     <VStack
       w="full"
@@ -49,7 +48,7 @@ export function Game({ data, setFirstTeamPoints, setSecondTeamPoints, onGuessCon
       p={4}
     >
       <Text color="gray.100" fontFamily="heading" fontSize="sm">
-        {getName(data.firstTeamCountryCode)} vs. {getName(data.secondTeamCountryCode)}
+        {data.firstTeamCountryCode === 'WL' ? 'País de Gales' : getName(data.firstTeamCountryCode)} vs. {data.secondTeamCountryCode === 'WL' ? 'País de Gales' : getName(data.secondTeamCountryCode)}
       </Text>
 
       <Text color="gray.200" fontSize="xs">
